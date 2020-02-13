@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>WELCOME!</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="icon.ico">
+    <!--refreshes every 300 seconds -->
+    <meta http-equiv="refresh" content="300">
+  </head>
+  <body>
+    <div class="header">
+      <span class="span_title">KUPID</span>
+      <span class="span_body">Korea University Portal to Information Depository</span>
+    </div>
+    <div class="body">
+      <div style="width: 900px; margin: 0 auto;">
+        <div class="link_table">
+          <a href="https://portal.korea.ac.kr/front/Intro.kpd" target="_blank" class="button" id="portal">Portal</a>
+          <a href="https://mail.naver.com/" target="_blank" class="button" id="mail">Naver Mail</a>
+          <a href="https://kulms.korea.ac.kr" target="_blank" class="button" id="bboard">Blackboard</a>
+        </div>
+        <h3 style="width: 880px; color: firebrick; margin: 20px auto 0px auto;">2020년 1학기 시간표</h3>
+        <div class="calendar">
+          <div class="wrapper">
+            <div class="date" id="gyosi">교시</div>
+            <div class="date">월</div>
+            <div class="date">화</div>
+            <div class="date">수</div>
+            <div class="date">목</div>
+            <div class="date">금</div>
+            <script>
+              function left_func(now, num) {
+                switch (num) {
+                  case 1:
+                    if(900 <= now && now <= 1015) return 'left_correct';
+                    else return 'left_wrong';
+                    break;
+                  case 2:
+                    if(1030 <= now && now <= 1145) return 'left_correct';
+                    else return 'left_wrong';
+                    break;
+                  case 3:
+                    if(1200 <= now && now <= 1315) return 'left_correct';
+                    else return 'left_wrong';
+                    break;
+                  case 5:
+                    if(1400 <= now && now <= 1515) return 'left_correct';
+                    else return 'left_wrong';
+                    break;
+                  case 6:
+                    if(1530 <= now && now <= 1645) return 'left_correct';
+                    else return 'left_wrong';
+                    break;
+                  default:
+                    return 'left_wrong';
+                }
+              }
+              /**********
+                correct: date & time is correct
+                half: date is correct but time is wrong
+                wrong: date and time is both wrong
+              **********/
+              function right_func(day, now, today, num) {
+                if(day == today){
+                  switch (num) {
+                    case 1:
+                      if(900 <= now && now <= 1015) return 'correct';
+                      else return 'half';
+                      break;
+                    case 2:
+                      if(1015 <= now && now <= 1145) return 'correct';
+                      else return 'half';
+                      break;
+                    case 3:
+                      if(1145 <= now && now <= 1315) return 'correct';
+                      else return 'half';
+                      break;
+                    case 5:
+                      if(1315 <= now && now <= 1515) return 'correct';
+                      else return 'half';
+                      break;
+                    case 6:
+                      if(1515 <= now && now <= 1645) return 'correct';
+                      else return 'half';
+                      break;
+                    default:
+                  }
+                }
+                else return 'wrong';
+              }
+              let today = new Date();
+              let day = today.getDay();
+              var hour = today.getHours();
+              var min = today.getMinutes();
+              var now = hour * 100 + min;
+
+              let monwedfri1 = "인공지능";
+              let monwedfri1_place = "정보통신관 205호"
+
+              let monwed2 = '뇌및의공학입문';
+              let monwed2_place = '과학도서관 615호';
+              let monwed34 = '';
+              let monwed34_place = '';
+              let monwed5 = '컴퓨터그래픽스';
+              let monwed5_place = '정보통신관 205호';
+              let monwed6 = '신경생물학';
+              let monwed6_place = '하나과학관 B109호';
+
+              let tuethu2 = '감각및지각심리학';
+              let tuethu2_place = '법학관신관 202호';
+              let tuethu34 = '';
+              let tuethu34_place = '';
+              let tuethu5 = '뇌및인지과학개론';
+              let tuethu5_place = '애기능생활관 302호';
+              let tuethu6 = '운영체제';
+              let tuethu6_place = '정보통신관 205호';
+
+              document.write('<div class="time_schedule" id="' + left_func(now, 1) + '"><b>1교시</b><br>09:00 ~ 10:15</div>');
+              document.write('<div class="time_days" id="' + right_func(day, now, 1, 1) + '">' + monwedfri1 + '<br>' + monwedfri1_place + '</div>')
+              document.write('<div class="time_days" id="' + right_func(day, now, 2, 1) + '"></div>')
+              document.write('<div class="time_days" id="' + right_func(day, now, 3, 1) + '">' + monwedfri1 + '<br>' + monwedfri1_place + '</div>')
+              document.write('<div class="time_days" id="' + right_func(day, now, 4, 1) + '"></div>')
+              document.write('<div class="time_days" id="' + right_func(day, now, 5, 1) + '">' + monwedfri1 + '<br>' + monwedfri1_place + '</div>')
+
+              document.write('<div class="time_schedule" id="' + left_func(now, 2) + '"><b>2교시</b><br>10:30 ~ 11:45</div>');
+              document.write('<div class="time_days" id="' + right_func(day, now, 1, 2) + '">' + monwed2 + '<br>' + monwed2_place + '</div>')
+              document.write('<div class="time_days" id="' + right_func(day, now, 2, 2) + '">' + tuethu2 + '<br>' + tuethu2_place + '</div>')
+              document.write('<div class="time_days" id="' + right_func(day, now, 3, 2) + '">' + monwed2 + '<br>' + monwed2_place + '</div>')
+              document.write('<div class="time_days" id="' + right_func(day, now, 4, 2) + '">' + tuethu2 + '<br>' + tuethu2_place + '</div>')
+              document.write('<div class="time_days" id="' + right_func(day, now, 5, 2) + '">' + monwedfri1 + '<br>' + monwedfri1_place + '</div>')
+
+              document.write('<div class="time_schedule" id="' + left_func(now, 3) + '"><b>3/4교시</b><br>12:00 ~ 13:15</div>');
+              document.write('<div class="time_days" id="' + right_func(day, now, 1, 3) + '">' + monwed34 + '<br>' + monwed34_place + '</div>')
+              document.write('<div class="time_days" id="' + right_func(day, now, 2, 3) + '">' + tuethu34 + '<br>' + tuethu34_place + '</div>')
+              document.write('<div class="time_days" id="' + right_func(day, now, 3, 3) + '">' + monwed34 + '<br>' + monwed34_place + '</div>')
+              document.write('<div class="time_days" id="' + right_func(day, now, 4, 3) + '">' + tuethu34 + '<br>' + tuethu34_place + '</div>')
+              document.write('<div class="time_days" id="' + right_func(day, now, 5, 3) + '"></div>')
+
+              document.write('<div class="time_schedule" id="' + left_func(now, 5) + '"><b>5교시</b><br>14:00 ~ 15:15</div>');
+              document.write('<div class="time_days" id="' + right_func(day, now, 1, 5) + '">' + monwed5 + '<br>' + monwed5_place + '</div>')
+              document.write('<div class="time_days" id="' + right_func(day, now, 2, 5) + '">' + tuethu5 + '<br>' + tuethu5_place + '</div>')
+              document.write('<div class="time_days" id="' + right_func(day, now, 3, 5) + '">' + monwed5 + '<br>' + monwed5_place + '</div>')
+              document.write('<div class="time_days" id="' + right_func(day, now, 4, 5) + '">' + tuethu5 + '<br>' + tuethu5_place + '</div>')
+              document.write('<div class="time_days" id="' + right_func(day, now, 5, 5) + '"></div>')
+
+              document.write('<div class="time_schedule" id="' + left_func(now, 6) + '"><b>6교시</b><br>15:30 ~ 16:45</div>');
+              document.write('<div class="time_days" id="' + right_func(day, now, 1, 6) + '">' + monwed6 + '<br>' + monwed6_place + '</div>')
+              document.write('<div class="time_days" id="' + right_func(day, now, 2, 6) + '">' + tuethu6 + '<br>' + tuethu6_place + '</div>')
+              document.write('<div class="time_days" id="' + right_func(day, now, 3, 6) + '">' + monwed6 + '<br>' + monwed6_place + '</div>')
+              document.write('<div class="time_days" id="' + right_func(day, now, 4, 6) + '">' + tuethu6 + '<br>' + tuethu6_place + '</div>')
+              document.write('<div class="time_days" id="' + right_func(day, now, 5, 6) + '"></div>')
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom">
+      <br>[ 2020년 2월 2일 제작본 ]
+      <br><a href="file:///C:/Users/82105/Desktop/web/myweb/main.html" target="_blank">[ 2020년 1월 23일 제작본 ]</a>
+    </div>
+  </body>
+</html>

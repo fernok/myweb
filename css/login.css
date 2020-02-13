@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+}
+
+.leftbody {
+  display: inline-block;
+  width: 550px;
+  height: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  position: fixed;
+  background-color: #D7C9B1;
+}
+
+.rightbody {
+  display: inline-block;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 550px;
+  position: fixed;
+  background-color: #7B031D;
+}
+
+.imagediv {
+  width: 400px;
+  height: 400px;
+  border: none;
+  margin: auto;
+
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.form_items {
+  color: white;
+}
